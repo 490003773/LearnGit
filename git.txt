@@ -1,0 +1,30 @@
+一、Git 命令
+mkdir 							创建空目录
+rm								移除
+cd 								改变当前所处目录
+pwd								显示当前目录
+git init						将当前目录初始化为仓库
+git add							把文件添加到暂存区
+git rm							把文件移除出暂存区(要先在工作区移除) 			-f 								强制移除(工作区与暂存区都被移除)
+git commit 						把文件提交到当前分支							-m 								输入本次提交的说明
+git status						显示仓库当前的状态
+git diff						查看修改详情
+git diff HEAD -- file		 	查看某个文件在工作区与版本库中最新版本的区别
+HEAD							指向当前的版本									git reset --hard commit_id		通过commit_id在各版本穿梭
+git checkout -- file			丢弃工作区的修改,回退到版本库的状态
+								(如果add了,则回退到暂存区状态;否则回退到分支状态)
+git reset						既可以回退版本,也可以把暂存区回退到工作区
+git log 						查看提交历史
+git reflog						查看命令历史
+git remote add origin address   添加远程库
+git push origin master			把本地库的内容推送到远程库						-u								将本地库与远程库关联
+
+二、Git 的逻辑实现
+	Git总体上分为工作区和版本库,工作区用来工作,版本库是每一次工作内容的历史记录。版本库又包含了暂存区(stage 或 index)
+与分支。工作区的工作文件要先添加(add)到暂存区，然后才能提交(commit)为一个新的分支版本。
+
+learngit		工作区(Working Directory)
+.git			版本库(Repository){包括stage 和 分支}
+stage(index)	暂存区
+HEAD			指向master分支的指针
+origin			远程库默认名
